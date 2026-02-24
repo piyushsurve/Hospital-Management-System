@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors Added by Receptionist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+
+    <div class="max-w-6xl mx-auto">
+
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">
+            Doctors Added by 
+            <span class="text-blue-700">{{ receptionist.user.first_name }} {{ receptionist.user.last_name }}</span>
+        </h1>
+
+        <p class="text-gray-600 mb-6 text-lg">
+            Hospital: <span class="font-semibold">{{ receptionist.hospital.name }}</span>
+        </p>
+
+        <!-- Doctors Table -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <table class="min-w-full">
+                <thead class="bg-blue-900 text-white">
+                    <tr>
+                        <th class="py-3 px-4 text-left">First Name</th>
+                        <th class="py-3 px-4 text-left">Last Name</th>
+                        <th class="py-3 px-4 text-left">Speciality</th>
+                        <th class="py-3 px-4 text-left">Available From</th>
+                        <th class="py-3 px-4 text-left">Available To</th>
+                        <th class="py-3 px-4 text-center">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for d in doctors %}
+                    <tr class="border-b">
+                        <td class="py-3 px-4">{{ d.user.first_name }}</td>
+                        <td class="py-3 px-4">{{ d.user.last_name }}</td>
+                        <td class="py-3 px-4">{{ d.speciality }}</td>
+                        <td class="py-3 px-4">{{ d.available_from }}</td>
+                        <td class="py-3 px-4">{{ d.available_to }}</td>
+
+                        <td class="py-3 px-4 text-center">
+                            <a href="{% url 'DeleteDoctor' d.id %}"
+                               class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
+                               Delete
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="py-4 text-center text-gray-600">
+                            No doctors added by this receptionist.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href="{% url 'ViewReciptionists' %}"
+            class="inline-block mt-6 bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800">
+            ← Back to Receptionists
+        </a>
+
+    </div>
+
+</body>
+</html>

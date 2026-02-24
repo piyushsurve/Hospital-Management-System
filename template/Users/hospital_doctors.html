@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+
+    <div class="container mx-auto py-10">
+
+        <h1 class="text-4xl font-bold text-blue-700 mb-6 text-center">
+            Doctors at {{ hospital.name }}
+        </h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            {% for doctor in doctors %}
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition overflow-hidden">
+
+                <img src="{{ doctor.image_url }}" 
+                     class="w-full h-48 object-cover" 
+                     alt="Doctor">
+
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-900">
+                        Dr. {{ doctor.user.first_name }} {{ doctor.user.last_name }}
+                    </h2>
+
+                    <p class="text-gray-600 mt-2">🩺 {{ doctor.speciality }}</p>
+                    <p class="text-gray-600 mt-1">📞 {{ doctor.phone }}</p>
+                    <p class="text-gray-600 mt-1">
+                        ⏱ Available: {{ doctor.available_from }} - {{ doctor.available_to }}
+                    </p>
+
+                    <a href="{% url 'BookAppointment' doctor.id %}"
+                       class="mt-4 inline-block w-full bg-green-600 text-white text-center py-2 rounded-lg hover:bg-green-700">
+                        Book Appointment
+                    </a>
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>

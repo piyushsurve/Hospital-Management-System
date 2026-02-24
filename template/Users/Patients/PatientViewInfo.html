@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen p-10">
+
+    <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 flex justify-between items-center">
+            My Information
+        </h1>
+
+        <div class="space-y-4 text-gray-700">
+
+            <p><strong>Username:</strong> {{ request.user.username }}</p>
+            <p><strong>First Name:</strong> {{ request.user.first_name }}</p>
+            <p><strong>Last Name:</strong> {{ request.user.last_name }}</p>
+            <p><strong>Email:</strong> {{ request.user.email }}</p>
+
+            <p><strong>Phone:</strong> {{ patient.phone }}</p>
+            <p><strong>Address:</strong> {{ patient.address }}</p>
+            <p><strong>Date of Birth:</strong> {{ patient.date_of_birth }}</p>
+
+        </div>
+
+        <!-- EDIT BUTTON -->
+        <div class="mt-6">
+            <a href="{% url 'EditPatientInfo' %}"
+               class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                Edit Information
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

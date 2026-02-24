@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Appointments</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<div class="max-w-5xl mx-auto mt-10 bg-white shadow-lg rounded-lg p-6">
+
+    <h2 class="text-2xl font-bold text-blue-900 mb-4">
+        📅 Appointments for {{ hospital.name }}
+    </h2>
+
+    {% if appointments %}
+        <div class="space-y-4">
+
+            {% for ap in appointments %}
+                <div class="border p-5 rounded-lg bg-gray-50 hover:bg-gray-100 transition">
+
+                    <div class="flex justify-between items-start">
+
+                        <!-- Appointment Info -->
+                        <div>
+                            <h3 class="font-bold text-xl text-blue-700">
+                                Dr. {{ ap.doctor.user.first_name }} {{ ap.doctor.user.last_name }}
+                                <span class="text-sm text-gray-500">({{ ap.doctor.speciality }})</span>
+                            </h3>
+
+                            <p class="text-gray-700 mt-1">
+                                👤 Patient:
+                                <span class="font-semibold">
+                                    {{ ap.patient.user_id.first_name }} {{ ap.patient.user_id.last_name }}
+                                </span>
+                            </p>
+
+                            <p class="text-gray-700">📞 Phone: {{ ap.patient.phone }}</p>
+                            <p class="text-gray-700">📅 Date: {{ ap.appointment_date }}</p>
+                            <p class="text-gray-700">⏰ Time: {{ ap.appointment_time }}</p>
+
+                            {% if ap.symptoms %}
+                                <p class="text-gray-700">📝 Symptoms: {{ ap.symptoms }}</p>
+                            {% endif %}
+
+                            <p class="text-gray-400 text-sm mt-2">
+                                Booked at: {{ ap.created_at }}
+                            </p>
+                        </div>
+
+                        <!-- Status + Action Buttons -->
+                        <div class="text-right">
+
+                            <!-- STATUS BADGE -->
+                            {% if ap.status == "Confirmed" %}
+                                <span class="bg-green-600 text-white text-sm px-3 py-1 rounded block mb-2">
+                                    Confirmed
+                                </span>
+
+                            {% elif ap.status == "Rejected" %}
+                                <span class="bg-red-600 text-white text-sm px-3 py-1 rounded block mb-2">
+                                    Rejected
+                                </span>
+
+                            {% else %}
+                                <span class="bg-yellow-500 text-white text-sm px-3 py-1 rounded block mb-2">
+                                    Pending
+                                </span>
+                            {% endif %}
+
+                            <!-- ACTION BUTTONS -->
+                            <div class="space-x-2 mt-2">
+
+                                <!-- CONFIRM BUTTON -->
+                                <form action="{% url 'confirm_appointment' ap.id %}" method="POST" class="inline">
+                                    {% csrf_token %}
+                                    <button
+                                        class="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700 text-sm">
+                                        Confirm
+                                    </button>
+                                </form>
+
+                                <!-- REJECT BUTTON -->
+                                <form action="{% url 'reject_appointment' ap.id %}" method="POST" class="inline">
+                                    {% csrf_token %}
+                                    <button
+                                        class="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700 text-sm">
+                                        Reject
+                                    </button>
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+        <p class="text-gray-600 mt-4 text-center">No appointments booked yet.</p>
+    {% endif %}
+</div>
+
+</body>
+</html>

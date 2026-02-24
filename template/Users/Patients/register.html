@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background-image: url("https://img.freepik.com/free-vector/abstract-line-hexagon-geometric-texture_1035-17373.jpg?t=st=1759238684~exp=1759242284~hmac=3afec6d3555157ff79f2e7ef5b3ccd7a9379f60d26513807569ffafb483b294a&w=1480"); /* Replace with your image path */
+        background-size: cover;
+        background-position: center;
+      }
+      .overlay {
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex items-center justify-center px-4">
+    <div class="overlay w-full max-w-4xl p-8 rounded-lg shadow-lg">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">
+        Create Your Account
+      </h2>
+
+      <form class="space-y-6" method="post" novalidate>
+         {% csrf_token %}
+        <!-- Row 1 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label
+              for="username"
+              class="block text-sm font-medium text-gray-700"
+              >Username</label
+            >
+            {{form.username}}
+
+               {% if form.username.errors %}
+              {% for error in form.username.errors %}
+
+            <p style="color: red;">{{error}}</p>
+
+            {% endfor %} {% endif %}
+          </div>
+          <div>
+            <label
+              for="first_name"
+              class="block text-sm font-medium text-gray-700"
+              >First Name</label
+            >
+            {{form.first_name}}
+               {% if form.first_name.errors %}
+              {% for error in form.first_name.errors %}
+
+            <p style="color: red;">{{error}}</p>
+
+            {% endfor %} {% endif %}
+          </div>
+          <div>
+            <label
+              for="last_name"
+              class="block text-sm font-medium text-gray-700"
+              >Last Name</label
+            >
+            {{form.last_name}}
+               {% if form.last_name.errors %}
+              {% for error in form.last_name.errors %}
+
+            <p style="color: red;">{{error}}</p>
+
+            {% endfor %} {% endif %}
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700"
+              >Email</label
+            >
+            {{form.email}}
+               {% if form.email.errors %}
+              {% for error in form.email.errors %}
+
+            <p style="color: red;">{{error}}</p>
+
+            {% endfor %} {% endif %}
+          </div>
+          <div>
+            <label
+              for="phone_no"
+              class="block text-sm font-medium text-gray-700"
+              >Phone Number</label
+            >
+            {{form.phone_no}}
+               {% if form.phone_no.errors %}
+              {% for error in form.phone_no.errors %}
+
+            <p style="color: red;">{{error}}</p>
+
+            {% endfor %} {% endif %}
+          </div>
+          <div>
+            <label
+              for="date_of_birth"
+              class="block text-sm font-medium text-gray-700"
+              >Date of Birth</label
+            >
+            {{form.date_of_birth}}
+
+               {% if form.date_of_birth.errors %}
+              {% for error in form.date_of_birth.errors %}
+
+            <p style="color: red;">{{error}}</p>
+
+            {% endfor %} {% endif %}
+          </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label
+              for="password"
+              class="block text-sm font-medium text-gray-700"
+              >Password</label
+            >
+            {{form.password1}}
+             {% if form.password1.errors %} 
+            {% for error in form.password1.errors %}
+
+            <p style="color: red;">{{error}}</p>
+
+            {% endfor %} {% endif %}
+          </div>
+          <div>
+            <label
+              for="confirm_password"
+              class="block text-sm font-medium text-gray-700"
+              >Confirm Password</label>
+            {{form.password2}}
+             {% if form.password2.errors %}
+              {% for error in form.password2.errors %}
+
+            <p style="color: red;">{{error}}</p>
+
+            {% endfor %} {% endif %}
+          </div>
+          <div>
+            <label for="address" class="block text-sm font-medium text-gray-700"
+              >Address</label
+            >
+            {{form.address}}
+
+               {% if form.address.errors %}
+              {% for error in form.address.errors %}
+
+            <p style="color: red;">{{error}}</p>
+
+            {% endfor %} {% endif %}
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+         {% if form.non_field_errors %}
+         {% for error in form.non_field.errors  %}
+         <p style="color: red;">{{error}}</p>
+         {% endfor %}
+         {% endif %}
+        <div class="text-center mt-6">
+          <button
+            type="submit"
+            class="w-full md:w-auto px-6 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition"
+          >
+            Create Account
+          </button>
+          <p class="text-sm text-gray-600 mt-4">
+            Already have an account?
+            <a
+              href="{% url 'UserLogin' %}"
+              class="text-blue-600 hover:underline"
+              >Login here</a
+            >
+          </p>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

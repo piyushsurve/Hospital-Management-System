@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen p-10">
+
+    <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">
+            Edit My Information
+        </h1>
+
+        <form method="POST" class="space-y-6">
+            {% csrf_token %}
+
+            <!-- USER FIELDS -->
+            <div>
+                <label class="font-semibold">Username</label>
+                <input type="text" name="username" value="{{ request.user.username }}"
+                       class="w-full mt-2 p-2 border rounded">
+            </div>
+
+            <div>
+                <label class="font-semibold">First Name</label>
+                <input type="text" name="first_name" value="{{ request.user.first_name }}"
+                       class="w-full mt-2 p-2 border rounded">
+            </div>
+
+            <div>
+                <label class="font-semibold">Last Name</label>
+                <input type="text" name="last_name" value="{{ request.user.last_name }}"
+                       class="w-full mt-2 p-2 border rounded">
+            </div>
+
+            <div>
+                <label class="font-semibold">Email</label>
+                <input type="email" name="email" value="{{ request.user.email }}"
+                       class="w-full mt-2 p-2 border rounded">
+            </div>
+
+            <!-- PATIENT MODEL FIELDS -->
+            <div>
+                <label class="font-semibold">Phone</label>
+                <input type="text" name="phone" value="{{ patient.phone }}"
+                       class="w-full mt-2 p-2 border rounded">
+            </div>
+
+            <div>
+                <label class="font-semibold">Address</label>
+                <textarea name="address" class="w-full mt-2 p-2 border rounded">{{ patient.address }}</textarea>
+            </div>
+
+            <div>
+                <label class="font-semibold">Date of Birth</label>
+                <input type="date" name="date_of_birth" value="{{ patient.date_of_birth }}"
+                       class="w-full mt-2 p-2 border rounded">
+            </div>
+
+            <!-- SUBMIT BUTTON -->
+            <button type="submit"
+                    class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700">
+                Save Changes
+            </button>
+        </form>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+{% extends 'MasterPage.html' %}
+
+{% block content %}
+
+
+    <!-- 🩺 Hero Section -->
+    <section class="flex flex-col md:flex-row items-center justify-between px-6 py-16">
+  <!-- Text Content -->
+  <div class="md:w-1/2 space-y-6 text-center md:text-left">
+    <h2 class="text-4xl md:text-5xl font-bold leading-tight text-gray-900">
+      Efficient Hospitals, Healthier Lives.
+    </h2>
+
+    <p class="text-lg text-gray-700">
+      A complete healthcare platform designed to simplify hospital operations and enhance the entire patient journey.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+      <button class="bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-900">
+        Discover The Hospital
+      </button>
+      <button class="bg-white text-gray-800 border border-gray-300 px-6 py-2 rounded hover:bg-gray-100">
+        Join Us
+      </button>
+    </div>
+  </div>
+
+  <!-- Image -->
+  <div class="md:w-1/2 mt-10 md:mt-0 flex justify-center">
+    <img
+      src="https://img.freepik.com/premium-photo/smiling-nurse-with-stethoscope-arms-crossed_582637-24986.jpg"
+      alt="Healthcare Professional"
+      class="rounded-lg shadow-lg w-full max-w-sm object-cover"
+    />
+  </div>
+</section>
+
+
+  </div>
+
+  <!-- 🧬 About Section -->
+<section class="bg-white py-16 px-6 md:px-20 ">
+  <div class="max-w-6xl mx-auto text-center md:text-left">
+    <!-- Heading -->
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">ABOUT US</h2>
+    <p class="text-lg text-gray-700 mb-10">
+     Our Hospital Management System is designed to streamline hospital operations, improve patient care, and reduce the workload of healthcare staff through digital solutions.
+    </p>
+
+    <!-- Core Values Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+      <div>
+        <h3 class="text-xl font-semibold text-blue-600 mb-2">🌱 Our Vision</h3>
+        <p class="text-gray-700">
+         Our goal is to bridge healthcare and technology, making hospital management more efficient and patient-friendly
+        </p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold text-blue-600 mb-2">🤝 Benifits You Get</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li>Saves time for doctors, staff, and patients</li>
+          <li>Ensures accuracy in records and billing</li>
+          <li>Improves hospital efficiency</li>
+          <li>Enhances patient satisfaction</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Stats & CTA -->
+    <div class="mt-12 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="flex items-center gap-6">
+        <div class="text-center">
+          <div class="text-4xl font-bold text-blue-600">20+</div>
+          <div class="text-gray-600">Healthcare Partners</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-bold text-blue-600">100k+</div>
+          <div class="text-gray-600">Patients Appointment</div>
+        </div>
+      </div>
+      <button class="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600 transition">
+        Learn More
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="bg-blue-50 py-12">
+  <div class="container mx-auto grid md:grid-cols-2 gap-8 items-center px-6">
+    
+    <!-- Left Side: Info -->
+    <div>
+      <h2 class="text-3xl font-bold text-blue-700 mb-4">We Value Your Feedback</h2>
+      <p class="text-gray-700 mb-4">
+        Your feedback helps us improve our Hospital Management System and provide
+        better care experiences for patients, doctors, and hospital staff.
+      </p>
+      <ul class="list-disc list-inside text-gray-600">
+        <li>Improve patient experience</li>
+        <li>Enhance hospital efficiency</li>
+        <li>Provide smarter healthcare solutions</li>
+      </ul>
+    </div>
+
+    <!-- Right Side: Feedback Form -->
+    <div class="bg-white shadow-lg rounded-lg p-6">
+      <form action="#" method="POST" class="space-y-4">
+        
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Name</label>
+          <input type="text" name="name" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500" required>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Email</label>
+          <input type="email" name="email" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500" required>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Feedback</label>
+          <textarea name="message" rows="4" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500" required></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition">
+          Submit Feedback
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

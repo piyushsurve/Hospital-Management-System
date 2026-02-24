@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Receptionist Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- Layout -->
+  <div class="flex h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-blue-900 text-white flex flex-col">
+      <div class="p-6 text-center border-b border-blue-700">
+        <h1 class="text-2xl font-bold">🏥 Receptionist Panel</h1>
+      </div>
+      <nav class="flex-1 p-4 space-y-2">
+        <a href="/dashboard" class="block px-4 py-2 rounded hover:bg-blue-700">Dashboard</a>
+        <a href="{% url 'DoctorForms'%}" class="block px-4 py-2 rounded hover:bg-blue-700">Add Doctors</a>
+        <a href="{% url 'DoctorList' %}" class="block px-4 py-2 rounded hover:bg-blue-700">View Doctors</a>
+        <a href="{% url 'ReceptionistAppointments' %}" class="block px-4 py-2 rounded hover:bg-blue-700">
+  Appointments
+</a>
+
+        
+      </nav>
+      <div class="p-4 border-t border-blue-700">
+        <a href="{% url 'UserLogOut' %}" class="w-full inline-block text-center bg-red-600 py-2 rounded hover:bg-red-700">Logout</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 overflow-y-auto">
+      <h2 class="text-3xl font-semibold text-gray-800 mb-6">Dashboard Overview</h2>
+
+      <!-- Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+          <h3 class="text-xl font-bold text-blue-900">Doctors</h3>
+          <p class="text-gray-600 mt-2">Add Doctors.</p>
+          <a href="{% url 'DoctorForms'%}" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Add Doctors
+          </a>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+          <h3 class="text-xl font-bold text-blue-900">View Doctors</h3>
+          <p class="text-gray-600 mt-2">View and delete doctors currently working in hospital</p>
+          <a href="{% url 'DoctorList' %}" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            View  Doctors
+          </a>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+  <h3 class="text-xl font-bold text-blue-900">Appointments</h3>
+  <p class="text-gray-600 mt-2">View all appointments booked for your hospital.</p>
+  <a href="{% url 'ReceptionistAppointments' %}" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+    View Appointments
+  </a>
+</div>
+
+
+       
+      </div>
+
+     
+      </div>
+    </main>
+  </div>
+</body>
+</html>

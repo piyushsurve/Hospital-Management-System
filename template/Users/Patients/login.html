@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white">
+
+  <div class="flex flex-col lg:flex-row h-screen">
+    
+    <!-- Left: Image Section (hidden on small screens) -->
+    <div class="hidden lg:block lg:w-1/2 h-full">
+      <img src="https://images.pexels.com/photos/668300/pexels-photo-668300.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+           alt="Placeholder Image"
+           class="object-cover w-full h-full" />
+    </div>
+
+    <!-- Right: Login Form -->
+    <div class="flex items-center justify-center w-full lg:w-1/2 p-8 sm:p-12 md:p-20 lg:p-36">
+      <div class="w-full max-w-md">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Login</h1>
+
+        <form method="post" class="space-y-6" novalidate>
+         {% csrf_token %}
+          <!-- Username -->
+          <div>
+            <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+           {{form.username}}
+          </div>
+
+          <!-- Password -->
+          <div>
+            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+            {{form.password}}
+          </div>
+
+          <!-- Remember Me -->
+          <div class="flex items-center">
+            <input type="checkbox" id="remember" name="remember" class="text-blue-600" />
+            <label for="remember" class="ml-2 text-sm text-gray-700">Remember Me</label>
+          </div>
+
+          <!-- Forgot Password -->
+          <div class="text-sm text-blue-600">
+            <a href="#" class="hover:underline">Forgot Password?</a>
+          </div>
+
+         
+
+          <!-- Login Button -->
+          
+           {% for msg in messages %}
+           <p style="color: red;">{{msg}}</p>
+           {% endfor %}
+          
+          <button type="submit"
+                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md py-2 px-4 transition">
+            Login
+          </button>
+        </form>
+
+        <!-- Sign Up Link -->
+        <div class="mt-6 text-center">
+          <a href="{% url 'UserRegister'%}" class="text-sm text-black hover:underline">Sign up Here</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
