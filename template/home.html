@@ -16,12 +16,10 @@
     </p>
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-      <button class="bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-900">
-        Discover The Hospital
-      </button>
-      <button class="bg-white text-gray-800 border border-gray-300 px-6 py-2 rounded hover:bg-gray-100">
-        Join Us
-      </button>
+      
+      <a href="{% url 'HospitalsList' %}" class="bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-900">Discover The Hospitals</a>
+    
+      <a href="{% url 'UserLogin' %}" class="bg-white text-gray-800 border border-gray-300 px-6 py-2 rounded hover:bg-gray-100">Join Us</a>
     </div>
   </div>
 
@@ -78,9 +76,7 @@
           <div class="text-gray-600">Patients Appointment</div>
         </div>
       </div>
-      <button class="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600 transition">
-        Learn More
-      </button>
+
     </div>
   </div>
 </section>
